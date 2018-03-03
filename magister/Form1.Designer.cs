@@ -52,6 +52,22 @@
             this.updater = new System.Windows.Forms.Timer(this.components);
             this.performanceCounter2 = new System.Diagnostics.PerformanceCounter();
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
+            this.performanceCounter3 = new System.Diagnostics.PerformanceCounter();
+            this.label4 = new System.Windows.Forms.Label();
+            this.performanceCounter4 = new System.Diagnostics.PerformanceCounter();
+            this.label5 = new System.Windows.Forms.Label();
+            this.performanceCounter5 = new System.Diagnostics.PerformanceCounter();
+            this.label6 = new System.Windows.Forms.Label();
+            this.performanceCounter6 = new System.Diagnostics.PerformanceCounter();
+            this.label7 = new System.Windows.Forms.Label();
+            this.performanceCounter7 = new System.Diagnostics.PerformanceCounter();
+            this.label8 = new System.Windows.Forms.Label();
+            this.performanceCounter8 = new System.Diagnostics.PerformanceCounter();
+            this.label9 = new System.Windows.Forms.Label();
+            this.performanceCounter9 = new System.Diagnostics.PerformanceCounter();
+            this.label10 = new System.Windows.Forms.Label();
+            this.performanceCounter10 = new System.Diagnostics.PerformanceCounter();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
@@ -60,6 +76,14 @@
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter10)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,7 +93,7 @@
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(828, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(886, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,7 +131,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(20, 84);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(828, 246);
+            this.groupBox1.Size = new System.Drawing.Size(886, 385);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "правка";
@@ -121,13 +145,15 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(3, 16);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(822, 227);
+            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.Size = new System.Drawing.Size(880, 366);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
             // metroTabPage1
             // 
+            this.metroTabPage1.Controls.Add(this.label11);
+            this.metroTabPage1.Controls.Add(this.label10);
             this.metroTabPage1.Controls.Add(this.metroButton3);
             this.metroTabPage1.Controls.Add(this.metroButton4);
             this.metroTabPage1.HorizontalScrollbarBarColor = true;
@@ -135,7 +161,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(814, 185);
+            this.metroTabPage1.Size = new System.Drawing.Size(872, 324);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "metroTabPage1";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -163,6 +189,12 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.label9);
+            this.metroTabPage2.Controls.Add(this.label8);
+            this.metroTabPage2.Controls.Add(this.label7);
+            this.metroTabPage2.Controls.Add(this.label6);
+            this.metroTabPage2.Controls.Add(this.label5);
+            this.metroTabPage2.Controls.Add(this.label4);
             this.metroTabPage2.Controls.Add(this.label3);
             this.metroTabPage2.Controls.Add(this.metroProgressBar1);
             this.metroTabPage2.Controls.Add(this.label2);
@@ -174,7 +206,7 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(814, 185);
+            this.metroTabPage2.Size = new System.Drawing.Size(872, 324);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "metroTabPage2";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
@@ -185,7 +217,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(481, 41);
+            this.label3.Location = new System.Drawing.Point(481, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 9;
@@ -193,7 +225,7 @@
             // 
             // metroProgressBar1
             // 
-            this.metroProgressBar1.Location = new System.Drawing.Point(32, 136);
+            this.metroProgressBar1.Location = new System.Drawing.Point(32, 261);
             this.metroProgressBar1.Name = "metroProgressBar1";
             this.metroProgressBar1.Size = new System.Drawing.Size(427, 14);
             this.metroProgressBar1.TabIndex = 8;
@@ -201,7 +233,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(223, 120);
+            this.label2.Location = new System.Drawing.Point(223, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 7;
@@ -210,7 +242,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(297, 41);
+            this.label1.Location = new System.Drawing.Point(3, 294);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
@@ -218,7 +250,7 @@
             // 
             // metroButton5
             // 
-            this.metroButton5.Location = new System.Drawing.Point(736, 159);
+            this.metroButton5.Location = new System.Drawing.Point(755, 252);
             this.metroButton5.Name = "metroButton5";
             this.metroButton5.Size = new System.Drawing.Size(75, 23);
             this.metroButton5.TabIndex = 5;
@@ -227,7 +259,7 @@
             // 
             // metroButton6
             // 
-            this.metroButton6.Location = new System.Drawing.Point(655, 159);
+            this.metroButton6.Location = new System.Drawing.Point(634, 252);
             this.metroButton6.Name = "metroButton6";
             this.metroButton6.Size = new System.Drawing.Size(75, 23);
             this.metroButton6.TabIndex = 4;
@@ -285,11 +317,123 @@
             this.performanceCounter1.CategoryName = "IPv4";
             this.performanceCounter1.CounterName = "Datagrams Outbound Discarded";
             // 
+            // performanceCounter3
+            // 
+            this.performanceCounter3.CategoryName = "IPv4";
+            this.performanceCounter3.CounterName = "Datagrams Outbound No Route";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(481, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "label4";
+            // 
+            // performanceCounter4
+            // 
+            this.performanceCounter4.CategoryName = "IPv4";
+            this.performanceCounter4.CounterName = "Datagrams Received Address Errors";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(481, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "label5";
+            // 
+            // performanceCounter5
+            // 
+            this.performanceCounter5.CategoryName = "IPv4";
+            this.performanceCounter5.CounterName = "Datagrams Received Header Errors";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(481, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "label6";
+            // 
+            // performanceCounter6
+            // 
+            this.performanceCounter6.CategoryName = "IPv4";
+            this.performanceCounter6.CounterName = "Datagrams Received Unknown Protocol";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(481, 120);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "label7";
+            // 
+            // performanceCounter7
+            // 
+            this.performanceCounter7.CategoryName = "IPv4";
+            this.performanceCounter7.CounterName = "Datagrams Received/sec";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(29, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "label8";
+            // 
+            // performanceCounter8
+            // 
+            this.performanceCounter8.CategoryName = "IPv4";
+            this.performanceCounter8.CounterName = "Datagrams Sent/sec";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(29, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "label9";
+            // 
+            // performanceCounter9
+            // 
+            this.performanceCounter9.CategoryName = "Память";
+            this.performanceCounter9.CounterName = "Доступно МБ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(18, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "label10";
+            // 
+            // performanceCounter10
+            // 
+            this.performanceCounter10.CategoryName = "Память";
+            this.performanceCounter10.CounterName = "Байт свободной памяти и обнуленных страниц памяти";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 13);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "label11";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(868, 350);
+            this.ClientSize = new System.Drawing.Size(926, 489);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -301,11 +445,20 @@
             this.groupBox1.ResumeLayout(false);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
+            this.metroTabPage1.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             this.metroTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.performanceCounter10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,6 +489,22 @@
         private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private System.Windows.Forms.Label label3;
         private System.Diagnostics.PerformanceCounter performanceCounter1;
+        private System.Diagnostics.PerformanceCounter performanceCounter3;
+        private System.Windows.Forms.Label label4;
+        private System.Diagnostics.PerformanceCounter performanceCounter4;
+        private System.Windows.Forms.Label label5;
+        private System.Diagnostics.PerformanceCounter performanceCounter5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Diagnostics.PerformanceCounter performanceCounter6;
+        private System.Diagnostics.PerformanceCounter performanceCounter7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Diagnostics.PerformanceCounter performanceCounter8;
+        private System.Diagnostics.PerformanceCounter performanceCounter9;
+        private System.Windows.Forms.Label label10;
+        private System.Diagnostics.PerformanceCounter performanceCounter10;
+        private System.Windows.Forms.Label label11;
     }
 }
 
