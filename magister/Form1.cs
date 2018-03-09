@@ -8,13 +8,71 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
+using System.Diagnostics;
+using Microsoft.Win32;
+
 namespace magister
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
-        public Form1()
+
+        private Thread IP_Received_Thread;
+        private Thread IP_Sent_Thread;
+        private double[] IP_Received_Array = new double[100];
+        private double[] IP_Sent_Array = new double[100];
+
+        private void getPerfomanceCounter()
+        {
+            var IP_Received = new PerformanceCounter("IPv4", "Datagrams Received/sec");
+            var IP_Sent = new PerformanceCounter("IPv4", "Datagrams Sent/sec");
+
+            while (true)
+            {
+                IP_Received_Array[IP_Received_Array.Length - 1] = Math.Round(IP_Received.NextValue(), 0);
+                IP_Sent_Array[IP_Sent_Array.Length - 1] = Math.Round(IP_Sent.NextValue(), 0);
+
+                Array.Copy(IP_Received_Array, 1, IP_Received_Array, 0, IP_Received_Array.Length - 1);
+                Array.Copy(IP_Sent_Array, 1, IP_Sent_Array, 0, IP_Sent_Array.Length - 1);
+
+                if (this.IP_Received.IsHandleCreated)
+                {
+                    this.Invoke((MethodInvoker)delegate { UpdateChart(); });
+                }
+                if (this.IP_Sent.IsHandleCreated)
+                {
+                    this.Invoke((MethodInvoker)delegate { IP_SentChart(); });
+                }
+
+                Thread.Sleep(1000);
+            }
+        }
+
+        private void UpdateChart() {
+            IP_Received.Series["Series1"].Points.Clear();
+            for (int i = 0; i < IP_Received_Array.Length - 1; ++i){
+                IP_Received.Series["Series1"].Points.Add(IP_Received_Array[i]);
+            }
+        }
+        private void IP_SentChart()
+        {
+            IP_Sent.Series["Series1"].Points.Clear();
+            for (int i = 0; i < IP_Sent_Array.Length - 1; ++i)
+            {
+                IP_Sent.Series["Series1"].Points.Add(IP_Sent_Array[i]);
+            }
+        }
+
+        public Form1() // действия на загрузку формы
         {
             InitializeComponent();
+            IP_Received_Thread = new Thread(new ThreadStart(this.getPerfomanceCounter));
+            IP_Received_Thread.IsBackground = true;           
+            IP_Sent_Thread = new Thread(new ThreadStart(this.getPerfomanceCounter));
+            IP_Sent_Thread.IsBackground = true;
+
+            IP_Sent_Thread.Start();
+            IP_Received_Thread.Start();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -65,9 +123,12 @@ namespace magister
             int Memory_Available = (int)(performanceCounter9.NextValue());
             // Доступная память
             int Memory_Free = (int)(performanceCounter10.NextValue())/(1024*1000);
-            label2.Text = proc.ToString();
+            label2.Text = "Загрузка ЦП: " +proc.ToString() + "%";
+            var memory_free = (Memory_Available * 100) / GetTotalMemoryInBytes();
+            var memory_use = 100 - Math.Round(memory_free, 0);
 
             metroProgressBar1.Value = proc;
+            metroProgressBar2.Value = (int)memory_use;
             label3.Text = "Отброшенные пакеты:" + Outbound_Discarded.ToString();
             label4.Text = "Пакеты которые не нашли маршрут:" + Outbound_No_Route.ToString();
             label5.Text = "Пакеты которые не отправленны из-за недопустимых ip адресов:" + Received_Address_Errors.ToString();
@@ -77,10 +138,86 @@ namespace magister
             label9.Text = "Скорость с которой пакеты отправляются:" + Sent_Sec.ToString();
             label10.Text = "Доступно памяти:" + Memory_Available.ToString();
             label11.Text = "Свободной Памяти:" + Memory_Free.ToString();
+            label12.Text = "Текущий IP адрес: "+GetIP();
+            label13.Text = "Версия ОС: "+GetWinName()+GetOSBit() +" Сборка " + Environment.OSVersion.Version.ToString();
+            label14.Text = "Имя компьютера: "+GetName() ;
+            label15.Text = "Количество ядер: " + System.Environment.ProcessorCount;
+            label16.Text = "Всего памяти: "+ GetTotalMemoryInBytes();
+
+            label17.Text ="Используется памяти " + memory_use.ToString() + "%";
         }
 
+        static string GetWinName()
+        {
+            string key = @"SOFTWARE\Microsoft\Windows NT\CurrentVersion";
+            using (RegistryKey regKey = Registry.LocalMachine.OpenSubKey(key))
+            {
+                if (regKey != null)
+                {
+                    try
+                    {
+                        string name = regKey.GetValue("ProductName").ToString();
+                        if (name == "") return "значение отсутствует";
+                        if (name.Contains("XP"))
+                            return "XP";
+                        else if (name.Contains("7"))
+                            return "Windows 7";
+                        else if (name.Contains("8"))
+                            return "Windows 8";
+                        else
+                            return "неизвестная версия Windows";
+                    }
+                    catch (Exception ex)
+                    {
+                        return ex.Message;
+                    }
+                }
+                else
+                    return "Не удалось получить значение ключа в реестре";
+            }
+        }
+        static  string GetOSBit()
+        {
+            if (Environment.Is64BitOperatingSystem)
+            {
+                return " x64";
+            }
+            else
+            {
+                return " x32";
+            }
+        }
+        static string GetIP() {
+            System.Net.IPAddress ip = System.Net.Dns.GetHostByName(System.Net.Dns.GetHostName()).AddressList[0];
+            return ip.ToString();
+        }
+        static string GetName() {
+            String host = System.Net.Dns.GetHostName();
+            return host.ToString();
+        }
+
+        public static string GetWorkGroup()
+        {
+            return "0";
+        }
+        static float GetTotalMemoryInBytes()
+        {
+            var kb = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
+            var mb = kb / (1024 * 1024);
+            return mb ;
+        }
 
         private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroProgressBar1_Click(object sender, EventArgs e)
         {
 
         }
